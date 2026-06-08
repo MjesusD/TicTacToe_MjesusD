@@ -3,6 +3,7 @@
 #include <iostream>
 #include <sstream>
 #include <cassert>
+#include <vector>
 
 using namespace std;
 
@@ -82,6 +83,10 @@ void State::print() const
          << endl;
 }
 
+int State::get_square(int x, int y) const
+{
+    return sq[y][x];
+}
 bool State::make_move(int x, int y)
 {
     assert(x >= 0 && x < N && y >= 0 && y < N);
@@ -139,4 +144,22 @@ int State::check_winner() const
     if (diag2 == -3) return P2;
 
     return 0;
+}
+
+std::vector<std::pair<int,int>> State::legal_moves() const
+{
+    std::vector<std::pair<int,int>> moves;
+
+    for(int y=0; y<N; y++)
+    {
+        for(int x=0; x<N; x++)
+        {
+            if(sq[y][x] == 0)
+            {
+                moves.push_back({x,y});
+            }
+        }
+    }
+
+    return moves;
 }

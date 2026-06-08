@@ -3,6 +3,8 @@
 
 #include <array>
 #include <string>
+#include <vector>
+#include <utility>
 
 struct InputException { };
 
@@ -30,6 +32,10 @@ public:
     int get_to_move() const;
 
     int check_winner() const;
+
+    int get_square(int x, int y) const;
+
+    std::vector<std::pair<int,int>> legal_moves() const;
 
 private:
 

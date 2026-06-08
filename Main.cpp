@@ -2,6 +2,8 @@
 #include "Player.h"
 #include "HumanPlayer.h"
 #include "RandomPlayer.h"
+#include "MinimaxPlayer.h"
+#include "NegamaxPlayer.h"
 
 #include <iostream>
 #include <ctime>
@@ -11,11 +13,11 @@ using namespace std;
 
 void clear_screen()
 {
-    // Linux 
+#ifdef _WIN32
+    system("cls");
+#else
     system("clear");
-
-    // Windows:
-    // system("cls");
+#endif
 }
 
 int main()
@@ -32,42 +34,74 @@ int main()
     cout << "=== Selección jugador X ===" << endl;
     cout << "1. Humano" << endl;
     cout << "2. Aleatorio" << endl;
+    cout << "3. Minimax" << endl;
+    cout << "4. Negamax" << endl;
     cout << "Opción: ";
 
     cin >> option;
 
-    if (option == 1)
-    {
+    switch(option)
+{
+    case 1:
         playerX = new HumanPlayer();
-    }
-    else
-    {
+        break;
+
+    case 2:
         playerX = new RandomPlayer();
-    }
+        break;
+
+    case 3:
+        playerX = new MinimaxPlayer();
+        break;
+
+    case 4:
+        playerX = new NegamaxPlayer();
+        break;
+
+    default:
+        cout << "Opcion invalida" << endl;
+        return 1;
+}
 
     cout << endl;
 
     cout << "=== Selección jugador O ===" << endl;
     cout << "1. Humano" << endl;
     cout << "2. Aleatorio" << endl;
+    cout << "3. Minimax" << endl;
+    cout << "4. Negamax" << endl;
     cout << "Opción: ";
 
     cin >> option;
 
-    if (option == 1)
-    {
+    switch(option)
+{
+    case 1:
         playerO = new HumanPlayer();
-    }
-    else
-    {
+        break;
+
+    case 2:
         playerO = new RandomPlayer();
-    }
+        break;
+
+    case 3:
+        playerO = new MinimaxPlayer();
+        break;
+
+    case 4:
+        playerO = new NegamaxPlayer();
+        break;
+
+    default:
+        cout << "Opcion invalida" << endl;
+        return 1;
+}
 
     // Ciclo del juego
 
     while (true)
     {
-        clear_screen();
+        //clear_screen();
 
         cout << "=== TIC TAC TOE ===" << endl;
 
