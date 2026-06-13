@@ -4,6 +4,7 @@
 #include "RandomPlayer.h"
 #include "MinimaxPlayer.h"
 #include "NegamaxPlayer.h"
+#include "AlphaBetaPlayer.h"
 
 #include <iostream>
 #include <ctime>
@@ -36,6 +37,7 @@ int main()
     cout << "2. Aleatorio" << endl;
     cout << "3. Minimax" << endl;
     cout << "4. Negamax" << endl;
+    cout << "5. AlphaBeta" << endl;
     cout << "Opción: ";
 
     cin >> option;
@@ -58,6 +60,10 @@ int main()
         playerX = new NegamaxPlayer();
         break;
 
+    case 5:
+        playerX = new AlphaBetaPlayer();
+        break;
+
     default:
         cout << "Opcion invalida" << endl;
         return 1;
@@ -70,6 +76,7 @@ int main()
     cout << "2. Aleatorio" << endl;
     cout << "3. Minimax" << endl;
     cout << "4. Negamax" << endl;
+    cout << "5. AlphaBeta" << endl;
     cout << "Opción: ";
 
     cin >> option;
@@ -90,6 +97,10 @@ int main()
 
     case 4:
         playerO = new NegamaxPlayer();
+        break;
+
+    case 5:
+        playerO = new AlphaBetaPlayer();
         break;
 
     default:
