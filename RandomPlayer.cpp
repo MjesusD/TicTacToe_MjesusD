@@ -7,18 +7,16 @@ using namespace std;
 
 void RandomPlayer::play(State & st)
 {
-    while (true)
-    {
-        int x = rand() % 3;
-        int y = rand() % 3;
+    auto moves = st.legal_moves();
 
-        if (st.make_move(x, y))
-        {
-            cout << "Random juega: "
-                 << x << " "
-                 << y << endl;
+    int pos = rand() % moves.size();
 
-            break;
-        }
-    }
+    int x = moves[pos].first;
+    int y = moves[pos].second;
+
+    st.make_move(x, y);
+
+    cout << "Random juega: "
+         << x << " "
+         << y << endl;
 }

@@ -1,9 +1,8 @@
 #ifndef STATE_H
 #define STATE_H
 
-#include <array>
-#include <string>
 #include <vector>
+#include <string>
 #include <utility>
 
 struct InputException { };
@@ -14,16 +13,9 @@ public:
 
     enum Players { P2 = -1, P1 = 1 };
 
-    static const int N = 3;
-    static const int SIZE = N * N;
-
-    static const std::array<char, 3> DISP;
-
-    State();
+    State(int width, int height, int k);
 
     bool full() const;
-
-    void set(const std::string & s);
 
     void print() const;
 
@@ -37,11 +29,22 @@ public:
 
     std::vector<std::pair<int,int>> legal_moves() const;
 
+    int heuristic() const;
+
+    // Nuevos getters
+    int get_width() const;
+    int get_height() const;
+    int get_k() const;
+
 private:
+
+    int width;
+    int height;
+    int k;
 
     int to_move;
 
-    std::array<std::array<signed char, N>, N> sq;
+    std::vector<std::vector<signed char>> sq;
 
     int filled;
 };

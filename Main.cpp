@@ -25,12 +25,71 @@ int main()
 {
     srand(time(0));
 
-    State st;
+    int width;
+    int height;
+    int k;
+    int H;
 
-    Player* playerX;
-    Player* playerO;
+    cout << "=== Configuracion del tablero ===" << endl;
+
+    cout << "Ancho: ";
+    cin >> width;
+
+    cout << "Alto: ";
+    cin >> height;
+
+    cout << "K (fichas consecutivas para ganar): ";
+    cin >> k;
+
+    cout << "Profundidad de busqueda (H): ";
+    cin >> H;
+
+    State st(width, height, k);
+
+    Player* playerX = nullptr;
+    Player* playerO = nullptr;
 
     int option;
+
+    cout << endl;
+    cout << "=== Selección jugador X ===" << endl;
+    cout << "1. Humano" << endl;
+    cout << "2. Aleatorio" << endl;
+    cout << "3. Minimax" << endl;
+    cout << "4. Negamax" << endl;
+    cout << "5. AlphaBeta" << endl;
+    cout << "Opción: ";
+
+    cin >> option;
+
+    switch(option)
+    {
+        case 1:
+            playerX = new HumanPlayer();
+            break;
+
+        case 2:
+            playerX = new RandomPlayer();
+            break;
+
+        case 3:
+            playerX = new MinimaxPlayer(H);
+            break;
+
+        case 4:
+            playerX = new NegamaxPlayer(H);
+            break;
+
+        case 5:
+            playerX = new AlphaBetaPlayer(H);
+            break;
+
+        default:
+            cout << "Opcion invalida" << endl;
+            return 1;
+    }
+
+    cout << endl;
 
     cout << "=== Selección jugador X ===" << endl;
     cout << "1. Humano" << endl;
@@ -43,77 +102,37 @@ int main()
     cin >> option;
 
     switch(option)
-{
-    case 1:
-        playerX = new HumanPlayer();
-        break;
+    {
+        case 1:
+            playerO = new HumanPlayer();
+            break;
 
-    case 2:
-        playerX = new RandomPlayer();
-        break;
+        case 2:
+            playerO = new RandomPlayer();
+            break;
 
-    case 3:
-        playerX = new MinimaxPlayer();
-        break;
+        case 3:
+            playerO = new MinimaxPlayer(H);
+            break;
 
-    case 4:
-        playerX = new NegamaxPlayer();
-        break;
+        case 4:
+            playerO = new NegamaxPlayer(H);
+            break;
 
-    case 5:
-        playerX = new AlphaBetaPlayer();
-        break;
+        case 5:
+            playerO = new AlphaBetaPlayer(H);
+            break;
 
-    default:
-        cout << "Opcion invalida" << endl;
-        return 1;
-}
-
-    cout << endl;
-
-    cout << "=== Selección jugador O ===" << endl;
-    cout << "1. Humano" << endl;
-    cout << "2. Aleatorio" << endl;
-    cout << "3. Minimax" << endl;
-    cout << "4. Negamax" << endl;
-    cout << "5. AlphaBeta" << endl;
-    cout << "Opción: ";
-
-    cin >> option;
-
-    switch(option)
-{
-    case 1:
-        playerO = new HumanPlayer();
-        break;
-
-    case 2:
-        playerO = new RandomPlayer();
-        break;
-
-    case 3:
-        playerO = new MinimaxPlayer();
-        break;
-
-    case 4:
-        playerO = new NegamaxPlayer();
-        break;
-
-    case 5:
-        playerO = new AlphaBetaPlayer();
-        break;
-
-    default:
-        cout << "Opcion invalida" << endl;
-        return 1;
-}
-
-    // Ciclo del juego
+        default:
+            cout << "Opcion invalida" << endl;
+            return 1;
+    }
 
     while (true)
     {
-        //clear_screen();
 
+        //clear_screen();
+        cout << endl;
         cout << "=== TIC TAC TOE ===" << endl;
 
         st.print();
@@ -140,16 +159,12 @@ int main()
 
         if (st.get_to_move() == State::P1)
         {
-            cout << endl;
             cout << "Turno X" << endl;
-
             playerX->play(st);
         }
         else
         {
-            cout << endl;
             cout << "Turno O" << endl;
-
             playerO->play(st);
         }
     }

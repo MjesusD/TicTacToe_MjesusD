@@ -1,108 +1,79 @@
 #include "State.h"
 
 #include <iostream>
-#include <sstream>
-#include <cassert>
-#include <vector>
 
 using namespace std;
 
-const array<char, 3> State::DISP = {{ 'o', '-', 'x' }};
-
-State::State()
+State::State(int w, int h, int kvalue)
 {
-    sq = { {} };
+    width = w;
+    height = h;
+    k = kvalue;
+
+    sq.resize(height);
+
+    for(int y = 0; y < height; y++)
+    {
+        sq[y].resize(width, 0);
+    }
+
     to_move = P1;
     filled = 0;
 }
 
 bool State::full() const
 {
-    return filled >= SIZE;
-}
-
-void State::set(const string & s)
-{
-    istringstream is(s);
-
-    char c;
-
-    to_move = P1;
-    filled = 0;
-
-    for (int y = 0; y < N; ++y)
-    {
-        for (int x = 0; x < N; ++x)
-        {
-            is >> c;
-
-            if (!is)
-            {
-                throw InputException();
-            }
-
-            if (c == DISP[1 + P1])
-            {
-                sq[y][x] = P1;
-                ++filled;
-            }
-            else if (c == DISP[1 + P2])
-            {
-                sq[y][x] = P2;
-                ++filled;
-            }
-            else
-            {
-                sq[y][x] = 0;
-            }
-        }
-    }
-
-    is >> c;
-
-    if (is)
-    {
-        throw InputException();
-    }
+    return filled >= width * height;
 }
 
 void State::print() const
 {
-    for (int y = 0; y < N; ++y)
+    for(int y = 0; y < height; y++)
     {
-        for (int x = 0; x < N; ++x)
+        for(int x = 0; x < width; x++)
         {
-            cout << DISP[sq[y][x] + 1];
+            if(sq[y][x] == P1)
+            {
+                cout << "X ";
+            }
+            else if(sq[y][x] == P2)
+            {
+                cout << "O ";
+            }
+            else
+            {
+                cout << "- ";
+            }
         }
 
         cout << endl;
     }
 
-    cout << DISP[to_move + 1]
-         << " (" << filled << ")"
-         << endl;
+    cout << endl;
 }
 
-int State::get_square(int x, int y) const
-{
-    return sq[y][x];
-}
 bool State::make_move(int x, int y)
 {
-    assert(x >= 0 && x < N && y >= 0 && y < N);
-
-    auto & c = sq[y][x];
-
-    if (c)
+    if(x < 0 || x >= width)
     {
         return false;
     }
 
-    c = to_move;
+    if(y < 0 || y >= height)
+    {
+        return false;
+    }
+
+    if(sq[y][x] != 0)
+    {
+        return false;
+    }
+
+    sq[y][x] = to_move;
 
     to_move = -to_move;
 
-    ++filled;
+    filled++;
 
     return true;
 }
@@ -112,47 +83,18 @@ int State::get_to_move() const
     return to_move;
 }
 
-int State::check_winner() const
+int State::get_square(int x, int y) const
 {
-    // filas
-    for (int y = 0; y < N; ++y)
-    {
-        int sum = sq[y][0] + sq[y][1] + sq[y][2];
-
-        if (sum == 3) return P1;
-        if (sum == -3) return P2;
-    }
-
-    // columnas
-    for (int x = 0; x < N; ++x)
-    {
-        int sum = sq[0][x] + sq[1][x] + sq[2][x];
-
-        if (sum == 3) return P1;
-        if (sum == -3) return P2;
-    }
-
-    // diagonales
-    int diag1 = sq[0][0] + sq[1][1] + sq[2][2];
-
-    if (diag1 == 3) return P1;
-    if (diag1 == -3) return P2;
-
-    int diag2 = sq[0][2] + sq[1][1] + sq[2][0];
-
-    if (diag2 == 3) return P1;
-    if (diag2 == -3) return P2;
-
-    return 0;
+    return sq[y][x];
 }
 
 std::vector<std::pair<int,int>> State::legal_moves() const
 {
-    std::vector<std::pair<int,int>> moves;
+    vector<pair<int,int>> moves;
 
-    for(int y=0; y<N; y++)
+    for(int y = 0; y < height; y++)
     {
-        for(int x=0; x<N; x++)
+        for(int x = 0; x < width; x++)
         {
             if(sq[y][x] == 0)
             {
@@ -162,4 +104,147 @@ std::vector<std::pair<int,int>> State::legal_moves() const
     }
 
     return moves;
+}
+
+int State::check_winner() const
+{
+    // Direcciones:
+    // horizontal
+    // vertical
+    // diagonal principal
+    // diagonal secundaria
+
+    int dx[4] = {1, 0, 1, 1};
+    int dy[4] = {0, 1, 1, -1};
+
+    for(int y = 0; y < height; y++)
+    {
+        for(int x = 0; x < width; x++)
+        {
+            int player = sq[y][x];
+
+            if(player == 0)
+            {
+                continue;
+            }
+
+            for(int dir = 0; dir < 4; dir++)
+            {
+                int count = 1;
+
+                for(int step = 1; step < k; step++)
+                {
+                    int nx = x + dx[dir] * step;
+                    int ny = y + dy[dir] * step;
+
+                    if(nx < 0 || nx >= width)
+                    {
+                        break;
+                    }
+
+                    if(ny < 0 || ny >= height)
+                    {
+                        break;
+                    }
+
+                    if(sq[ny][nx] != player)
+                    {
+                        break;
+                    }
+
+                    count++;
+                }
+
+                if(count >= k)
+                {
+                    return player;
+                }
+            }
+        }
+    }
+
+    return 0;
+}
+
+int State::heuristic() const
+{
+    int scoreX = 0;
+    int scoreO = 0;
+
+    int dx[4] = {1, 0, 1, 1};
+    int dy[4] = {0, 1, 1, -1};
+
+    for(int y = 0; y < height; y++)
+    {
+        for(int x = 0; x < width; x++)
+        {
+            int player = sq[y][x];
+
+            if(player == 0)
+            {
+                continue;
+            }
+
+            for(int dir = 0; dir < 4; dir++)
+            {
+                // Verificar si esta casilla es el inicio de la línea
+                int px = x - dx[dir];
+                int py = y - dy[dir];
+
+                if(px >= 0 &&
+                   px < width &&
+                   py >= 0 &&
+                   py < height &&
+                   sq[py][px] == player)
+                {
+                    continue;
+                }
+
+                int count = 1;
+
+                int nx = x + dx[dir];
+                int ny = y + dy[dir];
+
+                while(nx >= 0 &&
+                      nx < width &&
+                      ny >= 0 &&
+                      ny < height &&
+                      sq[ny][nx] == player)
+                {
+                    count++;
+
+                    nx += dx[dir];
+                    ny += dy[dir];
+                }
+
+                int value = count * count;
+
+                if(player == P1)
+                {
+                    scoreX += value;
+                }
+                else
+                {
+                    scoreO += value;
+                }
+            }
+        }
+    }
+
+    return scoreX - scoreO;
+}
+
+int State::get_width() const
+{
+    return width;
+}
+
+int State::get_height() const
+{
+    return height;
+}
+
+int State::get_k() const
+{
+    return k;
 }

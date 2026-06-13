@@ -6,10 +6,16 @@
 class AlphaBetaPlayer : public Player
 {
 public:
+
+    AlphaBetaPlayer(int depth);
+
     void play(State& st) override;
 
 private:
-    int alphabeta(State st, int alpha, int beta);
+
+    int maxDepth;
+
+    int alphabeta(State st, int depth, int alpha, int beta);
 };
 
 #endif

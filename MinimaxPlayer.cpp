@@ -6,27 +6,38 @@
 
 using namespace std;
 
-int MinimaxPlayer::minimax(State st)
+MinimaxPlayer::MinimaxPlayer(int depth)
+{
+    maxDepth = depth;
+}
+
+int MinimaxPlayer::minimax(State st, int depth)
 {
     int winner = st.check_winner();
 
     // Estados terminales
     if (winner == State::P1)
     {
-        return 1; // gana X
+        return 10000;
     }
 
     if (winner == State::P2)
     {
-        return -1; // gana O
+        return -10000;
     }
 
     if (st.full())
     {
-        return 0; // empate
+        return 0;
     }
 
-    // Turno de X (MAX)
+    // Corte por profundidad
+    if (depth >= maxDepth)
+    {
+        return st.heuristic();
+    }
+
+    // MAX = X
     if (st.get_to_move() == State::P1)
     {
         int best = numeric_limits<int>::min();
@@ -37,13 +48,14 @@ int MinimaxPlayer::minimax(State st)
 
             child.make_move(move.first, move.second);
 
-            best = max(best, minimax(child));
+            best = max(best,
+                       minimax(child, depth + 1));
         }
 
         return best;
     }
 
-    // Turno de O (MIN)
+    // MIN = O
     int best = numeric_limits<int>::max();
 
     for (auto move : st.legal_moves())
@@ -52,7 +64,8 @@ int MinimaxPlayer::minimax(State st)
 
         child.make_move(move.first, move.second);
 
-        best = min(best, minimax(child));
+        best = min(best,
+                   minimax(child, depth + 1));
     }
 
     return best;
@@ -62,9 +75,14 @@ void MinimaxPlayer::play(State& st)
 {
     auto moves = st.legal_moves();
 
+    if (moves.empty())
+    {
+        return;
+    }
+
     pair<int,int> bestMove = moves[0];
 
-    // Si juega X (MAX)
+    // X maximiza
     if (st.get_to_move() == State::P1)
     {
         int bestScore = numeric_limits<int>::min();
@@ -75,7 +93,7 @@ void MinimaxPlayer::play(State& st)
 
             child.make_move(move.first, move.second);
 
-            int score = minimax(child);
+            int score = minimax(child, 1);
 
             if (score > bestScore)
             {
@@ -84,7 +102,7 @@ void MinimaxPlayer::play(State& st)
             }
         }
     }
-    // Si juega O (MIN)
+    // O minimiza
     else
     {
         int bestScore = numeric_limits<int>::max();
@@ -95,7 +113,7 @@ void MinimaxPlayer::play(State& st)
 
             child.make_move(move.first, move.second);
 
-            int score = minimax(child);
+            int score = minimax(child, 1);
 
             if (score < bestScore)
             {
@@ -105,12 +123,12 @@ void MinimaxPlayer::play(State& st)
         }
     }
 
-    st.make_move(bestMove.first, bestMove.second);
+    st.make_move(bestMove.first,
+                 bestMove.second);
 
     cout << "Minimax juega: ("
          << bestMove.first
          << ", "
          << bestMove.second
          << ")" << endl;
-         
 }

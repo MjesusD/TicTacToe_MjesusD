@@ -13,31 +13,26 @@ void HumanPlayer::play(State & st)
 
         cout << "Ingrese x y: ";
 
-        // validar entrada númerica
         if (!(cin >> x >> y))
         {
-            cout << "Entrada inválida. Debe ingresar números." << endl;
+            cout << "Entrada invalida. Debe ingresar numeros." << endl;
 
             cin.clear();
-
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
             continue;
         }
 
-        // validar rango
-        if (x < 0 || x >= 3 || y < 0 || y >= 3)
+        if (x < 0 || x >= st.get_width() ||
+            y < 0 || y >= st.get_height())
         {
-            cout << "Posición fuera de rango." << endl;
-
+            cout << "Posicion fuera de rango." << endl;
             continue;
         }
 
-        // validar casilla libre
         if (!st.make_move(x, y))
         {
             cout << "Casilla ocupada." << endl;
-
             continue;
         }
 

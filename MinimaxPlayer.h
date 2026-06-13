@@ -6,10 +6,14 @@
 class MinimaxPlayer : public Player
 {
 public:
+    MinimaxPlayer(int depth);
+
     void play(State& st) override;
 
 private:
-    int minimax(State st);
+    int maxDepth;
+
+    int minimax(State st, int depth);
 };
 
 #endif
