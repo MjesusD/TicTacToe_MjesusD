@@ -3,6 +3,7 @@
 #include <limits>
 #include <iostream>
 #include <algorithm>
+#include <chrono>
 
 using namespace std;
 
@@ -13,6 +14,14 @@ MinimaxPlayer::MinimaxPlayer(int depth)
 
 int MinimaxPlayer::minimax(State st, int depth)
 {
+
+    stats.nodesVisited++;
+
+    if(depth > stats.maxDepthReached)
+    {
+        stats.maxDepthReached = depth;
+    }
+
     int winner = st.check_winner();
 
     // Estados terminales
@@ -73,6 +82,14 @@ int MinimaxPlayer::minimax(State st, int depth)
 
 void MinimaxPlayer::play(State& st)
 {
+    stats.nodesVisited = 0;
+    stats.nodesPruned = 0;
+    stats.maxDepthReached = 0;
+    stats.decisionTimeMs = 0;
+    stats.memoryBytes = 0;
+
+    auto start = chrono::high_resolution_clock::now();
+
     auto moves = st.legal_moves();
 
     if (moves.empty())
@@ -131,4 +148,25 @@ void MinimaxPlayer::play(State& st)
          << ", "
          << bestMove.second
          << ")" << endl;
+
+    auto end = chrono::high_resolution_clock::now();
+
+    stats.decisionTimeMs = chrono::duration<double, milli>(end - start).count();
+
+    stats.memoryBytes = stats.nodesVisited * sizeof(State);
+
+    totalStats.nodesVisited += stats.nodesVisited;
+
+    totalStats.nodesPruned += stats.nodesPruned;
+
+    totalStats.decisionTimeMs += stats.decisionTimeMs;
+
+    totalStats.memoryBytes += stats.memoryBytes;
+
+    if(stats.maxDepthReached >
+    totalStats.maxDepthReached)
+    {
+        totalStats.maxDepthReached =
+            stats.maxDepthReached;
+    }
 }

@@ -25,6 +25,8 @@ int main()
 {
     srand(time(0));
 
+    string result;
+    int turns = 0;
     int width;
     int height;
     int k;
@@ -91,7 +93,7 @@ int main()
 
     cout << endl;
 
-    cout << "=== Selección jugador X ===" << endl;
+    cout << "=== Selección jugador O ===" << endl;
     cout << "1. Humano" << endl;
     cout << "2. Aleatorio" << endl;
     cout << "3. Minimax" << endl;
@@ -130,7 +132,6 @@ int main()
 
     while (true)
     {
-
         //clear_screen();
         cout << endl;
         cout << "=== TIC TAC TOE ===" << endl;
@@ -161,13 +162,63 @@ int main()
         {
             cout << "Turno X" << endl;
             playerX->play(st);
+            turns++;
         }
         else
         {
             cout << "Turno O" << endl;
             playerO->play(st);
+            turns++;
         }
     }
+
+    // Obtener estadísticas 
+    SearchStats statsX = playerX->getStats();
+    SearchStats statsO = playerO->getStats();
+
+    cout << "\n========================" << endl;
+    cout << "RESULTADOS FINALES" << endl;
+    cout << "========================" << endl;
+
+    cout << "Resultado: "
+         << result << endl;
+
+    cout << "Turnos jugados: "
+         << turns << endl;
+
+    cout << "\n--- Jugador X ---" << endl;
+
+    cout << "Nodos visitados: "
+         << statsX.nodesVisited << endl;
+
+    cout << "Nodos podados: "
+         << statsX.nodesPruned << endl;
+
+    cout << "Profundidad maxima: "
+         << statsX.maxDepthReached << endl;
+
+    cout << "Tiempo total (ms): "
+         << statsX.decisionTimeMs << endl;
+
+    cout << "Memoria estimada (bytes): "
+         << statsX.memoryBytes << endl;
+
+    cout << "\n--- Jugador O ---" << endl;
+
+    cout << "Nodos visitados: "
+         << statsO.nodesVisited << endl;
+
+    cout << "Nodos podados: "
+         << statsO.nodesPruned << endl;
+
+    cout << "Profundidad maxima: "
+         << statsO.maxDepthReached << endl;
+
+    cout << "Tiempo total (ms): "
+         << statsO.decisionTimeMs << endl;
+
+    cout << "Memoria estimada (bytes): "
+         << statsO.memoryBytes << endl;
 
     delete playerX;
     delete playerO;
