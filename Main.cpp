@@ -9,6 +9,7 @@
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
+#include <fstream>
 
 using namespace std;
 
@@ -21,9 +22,42 @@ void clear_screen()
 #endif
 }
 
+
 int main()
 {
     srand(time(0));
+
+    ofstream report("resultados.csv", ios::app);
+
+    if(!report)
+    {
+        cout << "Error al abrir resultados.csv" << endl;
+        return 1;
+    }
+
+    if(report.tellp() == 0)
+{
+    report
+    << "JugadorX,"
+    << "JugadorO,"
+    << "Resultado,"
+    << "Turnos,"
+    << "Ancho,"
+    << "Alto,"
+    << "K,"
+    << "H,"
+    << "NodosX,"
+    << "PodasX,"
+    << "ProfundidadX,"
+    << "TiempoX,"
+    << "MemoriaX,"
+    << "NodosO,"
+    << "PodasO,"
+    << "ProfundidadO,"
+    << "TiempoO,"
+    << "MemoriaO"
+    << endl;
+}
 
     string result;
     int turns = 0;
@@ -51,6 +85,9 @@ int main()
     Player* playerX = nullptr;
     Player* playerO = nullptr;
 
+    string playerXName;
+    string playerOName;
+
     int option;
 
     cout << endl;
@@ -68,22 +105,27 @@ int main()
     {
         case 1:
             playerX = new HumanPlayer();
+            playerXName = "Humano";
             break;
 
         case 2:
             playerX = new RandomPlayer();
+            playerXName = "Random";
             break;
 
         case 3:
             playerX = new MinimaxPlayer(H);
+            playerXName = "MinMax";
             break;
 
         case 4:
             playerX = new NegamaxPlayer(H);
+            playerXName = "NegaMax";
             break;
 
         case 5:
             playerX = new AlphaBetaPlayer(H);
+            playerXName = "AlphaBeta";
             break;
 
         default:
@@ -107,22 +149,27 @@ int main()
     {
         case 1:
             playerO = new HumanPlayer();
+            playerOName = "Humano";
             break;
 
         case 2:
             playerO = new RandomPlayer();
+            playerOName = "Random";
             break;
 
         case 3:
             playerO = new MinimaxPlayer(H);
+            playerOName = "MinMax";
             break;
 
         case 4:
             playerO = new NegamaxPlayer(H);
+            playerOName = "NegaMax";
             break;
 
         case 5:
             playerO = new AlphaBetaPlayer(H);
+            playerOName = "AlphaBeta";
             break;
 
         default:
@@ -142,19 +189,22 @@ int main()
 
         if (winner == State::P1)
         {
-            cout << "Gana X" << endl;
+            result = "Gana X";
+            cout << result << endl;
             break;
         }
 
         if (winner == State::P2)
         {
-            cout << "Gana O" << endl;
+            result = "Gana O";
+            cout << result << endl;
             break;
         }
 
         if (st.full())
         {
-            cout << "Empate" << endl;
+            result = "Empate";
+            cout << result << endl;
             break;
         }
 
@@ -219,6 +269,33 @@ int main()
 
     cout << "Memoria estimada (bytes): "
          << statsO.memoryBytes << endl;
+
+
+    report
+    << playerXName << ","
+    << playerOName << ","
+    << result << ","
+    << turns << ","
+    << width << ","
+    << height << ","
+    << k << ","
+    << H << ","
+
+    << statsX.nodesVisited << ","
+    << statsX.nodesPruned << ","
+    << statsX.maxDepthReached << ","
+    << statsX.decisionTimeMs << ","
+    << statsX.memoryBytes << ","
+
+    << statsO.nodesVisited << ","
+    << statsO.nodesPruned << ","
+    << statsO.maxDepthReached << ","
+    << statsO.decisionTimeMs << ","
+    << statsO.memoryBytes
+
+    << endl;
+
+    report.close();
 
     delete playerX;
     delete playerO;

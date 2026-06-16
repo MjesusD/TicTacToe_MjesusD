@@ -1,0 +1,662 @@
+
+
+========================================
+Enfrentamiento: Random vs Random
+Tablero: 6x6  K=4  H=4
+Resultado: Gana O
+Turnos: 22
+
+[Jugador X - Random]
+Nodos visitados: 0
+Nodos podados: 0
+Profundidad maxima: 0
+Tiempo (ms): 0
+Memoria (bytes): 0
+
+[Jugador O - Random]
+Nodos visitados: 0
+Nodos podados: 0
+Profundidad maxima: 0
+Tiempo (ms): 0
+Memoria (bytes): 0
+
+========================================
+Enfrentamiento: Random vs MinMax
+Tablero: 6x6  K=4  H=4
+Resultado: Gana O
+Turnos: 24
+
+[Jugador X - Random]
+Nodos visitados: 0
+Nodos podados: 0
+Profundidad maxima: 0
+Tiempo (ms): 0
+Memoria (bytes): 0
+
+[Jugador O - MinMax]
+Nodos visitados: 4881033
+Nodos podados: 0
+Profundidad maxima: 4
+Tiempo (ms): 10790.9
+Memoria (bytes): 234289584
+
+========================================
+Enfrentamiento: Random vs NegaMax
+Tablero: 6x6  K=4  H=4
+Resultado: Gana O
+Turnos: 16
+
+[Jugador X - Random]
+Nodos visitados: 0
+Nodos podados: 0
+Profundidad maxima: 0
+Tiempo (ms): 0
+Memoria (bytes): 0
+
+[Jugador O - NegaMax]
+Nodos visitados: 4630430
+Nodos podados: 0
+Profundidad maxima: 4
+Tiempo (ms): 11347.6
+Memoria (bytes): 222260640
+
+========================================
+Enfrentamiento: Random vs AlphaBeta
+Tablero: 6x6  K=4  H=4
+Resultado: Gana O
+Turnos: 8
+
+[Jugador X - Random]
+Nodos visitados: 0
+Nodos podados: 0
+Profundidad maxima: 0
+Tiempo (ms): 0
+Memoria (bytes): 0
+
+[Jugador O - AlphaBeta]
+Nodos visitados: 320068
+Nodos podados: 22178
+Profundidad maxima: 4
+Tiempo (ms): 729.166
+Memoria (bytes): 15363264
+
+========================================
+Enfrentamiento: MinMax vs Random
+Tablero: 6x6  K=4  H=4
+Resultado: Gana X
+Turnos: 7
+
+[Jugador X - MinMax]
+Nodos visitados: 4117119
+Nodos podados: 0
+Profundidad maxima: 4
+Tiempo (ms): 8819.01
+Memoria (bytes): 197621712
+
+[Jugador O - Random]
+Nodos visitados: 0
+Nodos podados: 0
+Profundidad maxima: 0
+Tiempo (ms): 0
+Memoria (bytes): 0
+
+========================================
+Enfrentamiento: MinMax vs MinMax
+Tablero: 6x6  K=4  H=4
+Resultado: Gana X
+Turnos: 13
+
+[Jugador X - MinMax]
+Nodos visitados: 5300229
+Nodos podados: 0
+Profundidad maxima: 4
+Tiempo (ms): 11739.5
+Memoria (bytes): 254410992
+
+[Jugador O - MinMax]
+Nodos visitados: 4387592
+Nodos podados: 0
+Profundidad maxima: 4
+Tiempo (ms): 9745.7
+Memoria (bytes): 210604416
+
+========================================
+Enfrentamiento: MinMax vs NegaMax
+Tablero: 6x6  K=4  H=4
+Resultado: Gana X
+Turnos: 13
+
+[Jugador X - MinMax]
+Nodos visitados: 5300229
+Nodos podados: 0
+Profundidad maxima: 4
+Tiempo (ms): 11841.1
+Memoria (bytes): 254410992
+
+[Jugador O - NegaMax]
+Nodos visitados: 4387592
+Nodos podados: 0
+Profundidad maxima: 4
+Tiempo (ms): 9326.22
+Memoria (bytes): 210604416
+
+========================================
+Enfrentamiento: MinMax vs AlphaBeta
+Tablero: 6x6  K=4  H=4
+Resultado: Gana X
+Turnos: 17
+
+[Jugador X - MinMax]
+Nodos visitados: 5576684
+Nodos podados: 0
+Profundidad maxima: 4
+Tiempo (ms): 12932.4
+Memoria (bytes): 267680832
+
+[Jugador O - AlphaBeta]
+Nodos visitados: 358732
+Nodos podados: 24120
+Profundidad maxima: 4
+Tiempo (ms): 860.932
+Memoria (bytes): 17219136
+
+========================================
+Enfrentamiento: NegaMax vs Random
+Tablero: 6x6  K=4  H=4
+Resultado: Gana X
+Turnos: 7
+
+[Jugador X - NegaMax]
+Nodos visitados: 4138315
+Nodos podados: 0
+Profundidad maxima: 4
+Tiempo (ms): 8943.06
+Memoria (bytes): 198639120
+
+[Jugador O - Random]
+Nodos visitados: 0
+Nodos podados: 0
+Profundidad maxima: 0
+Tiempo (ms): 0
+Memoria (bytes): 0
+
+========================================
+Enfrentamiento: NegaMax vs MinMax
+Tablero: 6x6  K=4  H=4
+Resultado: Gana X
+Turnos: 13
+
+[Jugador X - NegaMax]
+Nodos visitados: 5300229
+Nodos podados: 0
+Profundidad maxima: 4
+Tiempo (ms): 11018.6
+Memoria (bytes): 254410992
+
+[Jugador O - MinMax]
+Nodos visitados: 4387592
+Nodos podados: 0
+Profundidad maxima: 4
+Tiempo (ms): 9822.65
+Memoria (bytes): 210604416
+
+========================================
+Enfrentamiento: NegaMax vs NegaMax
+Tablero: 6x6  K=4  H=4
+Resultado: Gana X
+Turnos: 13
+
+[Jugador X - NegaMax]
+Nodos visitados: 5300229
+Nodos podados: 0
+Profundidad maxima: 4
+Tiempo (ms): 11296.3
+Memoria (bytes): 254410992
+
+[Jugador O - NegaMax]
+Nodos visitados: 4387592
+Nodos podados: 0
+Profundidad maxima: 4
+Tiempo (ms): 10016.1
+Memoria (bytes): 210604416
+
+========================================
+Enfrentamiento: NegaMax vs AlphaBeta
+Tablero: 6x6  K=4  H=4
+Resultado: Gana X
+Turnos: 17
+
+[Jugador X - NegaMax]
+Nodos visitados: 5576684
+Nodos podados: 0
+Profundidad maxima: 4
+Tiempo (ms): 12204.6
+Memoria (bytes): 267680832
+
+[Jugador O - AlphaBeta]
+Nodos visitados: 358732
+Nodos podados: 24120
+Profundidad maxima: 4
+Tiempo (ms): 866.341
+Memoria (bytes): 17219136
+
+========================================
+Enfrentamiento: AlphaBeta vs Random
+Tablero: 6x6  K=4  H=4
+Resultado: Gana X
+Turnos: 7
+
+[Jugador X - AlphaBeta]
+Nodos visitados: 353060
+Nodos podados: 23646
+Profundidad maxima: 4
+Tiempo (ms): 758.229
+Memoria (bytes): 16946880
+
+[Jugador O - Random]
+Nodos visitados: 0
+Nodos podados: 0
+Profundidad maxima: 0
+Tiempo (ms): 0
+Memoria (bytes): 0
+
+========================================
+Enfrentamiento: AlphaBeta vs MinMax
+Tablero: 6x6  K=4  H=4
+Resultado: Gana X
+Turnos: 13
+
+[Jugador X - AlphaBeta]
+Nodos visitados: 465355
+Nodos podados: 29335
+Profundidad maxima: 4
+Tiempo (ms): 1060.38
+Memoria (bytes): 22337040
+
+[Jugador O - MinMax]
+Nodos visitados: 4387592
+Nodos podados: 0
+Profundidad maxima: 4
+Tiempo (ms): 9685.6
+Memoria (bytes): 210604416
+
+========================================
+Enfrentamiento: AlphaBeta vs NegaMax
+Tablero: 6x6  K=4  H=4
+Resultado: Gana X
+Turnos: 13
+
+[Jugador X - AlphaBeta]
+Nodos visitados: 465355
+Nodos podados: 29335
+Profundidad maxima: 4
+Tiempo (ms): 1045.9
+Memoria (bytes): 22337040
+
+[Jugador O - NegaMax]
+Nodos visitados: 4387592
+Nodos podados: 0
+Profundidad maxima: 4
+Tiempo (ms): 9280.84
+Memoria (bytes): 210604416
+
+========================================
+Enfrentamiento: AlphaBeta vs AlphaBeta
+Tablero: 6x6  K=4  H=4
+Resultado: Gana X
+Turnos: 15
+
+[Jugador X - AlphaBeta]
+Nodos visitados: 485923
+Nodos podados: 31436
+Profundidad maxima: 4
+Tiempo (ms): 1136.23
+Memoria (bytes): 23324304
+
+[Jugador O - AlphaBeta]
+Nodos visitados: 348667
+Nodos podados: 23298
+Profundidad maxima: 4
+Tiempo (ms): 864.64
+Memoria (bytes): 16736016
+
+========================================
+Enfrentamiento: MinMax vs MinMax
+Tablero: 8x4  K=3  H=3
+Resultado: Gana X
+Turnos: 13
+
+[Jugador X - MinMax]
+Nodos visitados: 117675
+Nodos podados: 0
+Profundidad maxima: 3
+Tiempo (ms): 219.702
+Memoria (bytes): 5648400
+
+[Jugador O - MinMax]
+Nodos visitados: 98132
+Nodos podados: 0
+Profundidad maxima: 3
+Tiempo (ms): 185.031
+Memoria (bytes): 4710336
+
+========================================
+Enfrentamiento: MinMax vs MinMax
+Tablero: 8x8  K=6  H=4
+Resultado: Empate
+Turnos: 64
+
+[Jugador X - MinMax]
+Nodos visitados: 105170066
+Nodos podados: 0
+Profundidad maxima: 4
+Tiempo (ms): 343189
+Memoria (bytes): 5048163168
+
+[Jugador O - MinMax]
+Nodos visitados: 97117372
+Nodos podados: 0
+Profundidad maxima: 4
+Tiempo (ms): 324052
+Memoria (bytes): 4661633856
+
+========================================
+Enfrentamiento: MinMax vs MinMax
+Tablero: 6x6  K=4  H=4
+Resultado: Gana X
+Turnos: 13
+
+[Jugador X - MinMax]
+Nodos visitados: 5300229
+Nodos podados: 0
+Profundidad maxima: 4
+Tiempo (ms): 15150.2
+Memoria (bytes): 254410992
+
+[Jugador O - MinMax]
+Nodos visitados: 4387592
+Nodos podados: 0
+Profundidad maxima: 4
+Tiempo (ms): 12203
+Memoria (bytes): 210604416
+
+========================================
+Enfrentamiento: MinMax vs NegaMax
+Tablero: 6x6  K=5  H=4
+Resultado: Empate
+Turnos: 36
+
+[Jugador X - MinMax]
+Nodos visitados: 5810422
+Nodos podados: 0
+Profundidad maxima: 4
+Tiempo (ms): 17226.2
+Memoria (bytes): 278900256
+
+[Jugador O - NegaMax]
+Nodos visitados: 5050556
+Nodos podados: 0
+Profundidad maxima: 4
+Tiempo (ms): 14329.5
+Memoria (bytes): 242426688
+
+========================================
+Enfrentamiento: NegaMax vs MinMax
+Tablero: 6x6  K=5  H=4
+Resultado: Empate
+Turnos: 36
+
+[Jugador X - NegaMax]
+Nodos visitados: 5810422
+Nodos podados: 0
+Profundidad maxima: 4
+Tiempo (ms): 16979.5
+Memoria (bytes): 278900256
+
+[Jugador O - MinMax]
+Nodos visitados: 5050556
+Nodos podados: 0
+Profundidad maxima: 4
+Tiempo (ms): 14581.2
+Memoria (bytes): 242426688
+
+========================================
+Enfrentamiento: NegaMax vs MinMax
+Tablero: 6x6  K=4  H=4
+Resultado: Gana X
+Turnos: 13
+
+[Jugador X - NegaMax]
+Nodos visitados: 5300229
+Nodos podados: 0
+Profundidad maxima: 4
+Tiempo (ms): 14795.2
+Memoria (bytes): 254410992
+
+[Jugador O - MinMax]
+Nodos visitados: 4387592
+Nodos podados: 0
+Profundidad maxima: 4
+Tiempo (ms): 11846.6
+Memoria (bytes): 210604416
+
+========================================
+Enfrentamiento: NegaMax vs MinMax
+Tablero: 6x6  K=5  H=4
+Resultado: Empate
+Turnos: 36
+
+[Jugador X - NegaMax]
+Nodos visitados: 5810422
+Nodos podados: 0
+Profundidad maxima: 4
+Tiempo (ms): 17634.5
+Memoria (bytes): 278900256
+
+[Jugador O - MinMax]
+Nodos visitados: 5050556
+Nodos podados: 0
+Profundidad maxima: 4
+Tiempo (ms): 14675.3
+Memoria (bytes): 242426688
+
+========================================
+Enfrentamiento: NegaMax vs NegaMax
+Tablero: 6x6  K=5  H=4
+Resultado: Empate
+Turnos: 36
+
+[Jugador X - NegaMax]
+Nodos visitados: 5810422
+Nodos podados: 0
+Profundidad maxima: 4
+Tiempo (ms): 16443.3
+Memoria (bytes): 278900256
+
+[Jugador O - NegaMax]
+Nodos visitados: 5050556
+Nodos podados: 0
+Profundidad maxima: 4
+Tiempo (ms): 14003
+Memoria (bytes): 242426688
+
+========================================
+Enfrentamiento: NegaMax vs NegaMax
+Tablero: 6x6  K=5  H=4
+Resultado: Empate
+Turnos: 36
+
+[Jugador X - NegaMax]
+Nodos visitados: 5810422
+Nodos podados: 0
+Profundidad maxima: 4
+Tiempo (ms): 16663.3
+Memoria (bytes): 278900256
+
+[Jugador O - NegaMax]
+Nodos visitados: 5050556
+Nodos podados: 0
+Profundidad maxima: 4
+Tiempo (ms): 14046.6
+Memoria (bytes): 242426688
+
+========================================
+Enfrentamiento: Random vs Random
+Tablero: 6x6  K=5  H=4
+Resultado: Gana O
+Turnos: 36
+
+[Jugador X - Random]
+Nodos visitados: 0
+Nodos podados: 0
+Profundidad maxima: 0
+Tiempo (ms): 0
+Memoria (bytes): 0
+
+[Jugador O - Random]
+Nodos visitados: 0
+Nodos podados: 0
+Profundidad maxima: 0
+Tiempo (ms): 0
+Memoria (bytes): 0
+
+========================================
+Enfrentamiento: Random vs MinMax
+Tablero: 6x6  K=5  H=4
+Resultado: Gana O
+Turnos: 16
+
+[Jugador X - Random]
+Nodos visitados: 0
+Nodos podados: 0
+Profundidad maxima: 0
+Tiempo (ms): 0
+Memoria (bytes): 0
+
+[Jugador O - MinMax]
+Nodos visitados: 4807240
+Nodos podados: 0
+Profundidad maxima: 4
+Tiempo (ms): 14437.2
+Memoria (bytes): 230747520
+
+========================================
+Enfrentamiento: Random vs NegaMax
+Tablero: 6x6  K=5  H=4
+Resultado: Gana O
+Turnos: 12
+
+[Jugador X - Random]
+Nodos visitados: 0
+Nodos podados: 0
+Profundidad maxima: 0
+Tiempo (ms): 0
+Memoria (bytes): 0
+
+[Jugador O - NegaMax]
+Nodos visitados: 4420360
+Nodos podados: 0
+Profundidad maxima: 4
+Tiempo (ms): 13064.3
+Memoria (bytes): 212177280
+
+========================================
+Enfrentamiento: Random vs AlphaBeta
+Tablero: 6x6  K=5  H=4
+Resultado: Gana O
+Turnos: 10
+
+[Jugador X - Random]
+Nodos visitados: 0
+Nodos podados: 0
+Profundidad maxima: 0
+Tiempo (ms): 0
+Memoria (bytes): 0
+
+[Jugador O - AlphaBeta]
+Nodos visitados: 211346
+Nodos podados: 15647
+Profundidad maxima: 4
+Tiempo (ms): 905.417
+Memoria (bytes): 10144608
+
+========================================
+Enfrentamiento: MinMax vs MinMax
+Tablero: 6x6  K=5  H=4
+Resultado: Empate
+Turnos: 36
+
+[Jugador X - MinMax]
+Nodos visitados: 5810422
+Nodos podados: 0
+Profundidad maxima: 4
+Tiempo (ms): 16703.3
+Memoria (bytes): 278900256
+
+[Jugador O - MinMax]
+Nodos visitados: 5050556
+Nodos podados: 0
+Profundidad maxima: 4
+Tiempo (ms): 14107.1
+Memoria (bytes): 242426688
+
+========================================
+Enfrentamiento: MinMax vs NegaMax
+Tablero: 6x6  K=5  H=4
+Resultado: Empate
+Turnos: 36
+
+[Jugador X - MinMax]
+Nodos visitados: 5810422
+Nodos podados: 0
+Profundidad maxima: 4
+Tiempo (ms): 18316.5
+Memoria (bytes): 278900256
+
+[Jugador O - NegaMax]
+Nodos visitados: 5050556
+Nodos podados: 0
+Profundidad maxima: 4
+Tiempo (ms): 15780.5
+Memoria (bytes): 242426688
+
+========================================
+Enfrentamiento: MinMax vs AlphaBeta
+Tablero: 6x6  K=5  H=4
+Resultado: Empate
+Turnos: 36
+
+[Jugador X - MinMax]
+Nodos visitados: 5810422
+Nodos podados: 0
+Profundidad maxima: 4
+Tiempo (ms): 16555.5
+Memoria (bytes): 278900256
+
+[Jugador O - AlphaBeta]
+Nodos visitados: 320272
+Nodos podados: 25214
+Profundidad maxima: 4
+Tiempo (ms): 1021.46
+Memoria (bytes): 15373056
+
+========================================
+Enfrentamiento: NegaMax vs NegaMax
+Tablero: 6x6  K=5  H=4
+Resultado: Empate
+Turnos: 36
+
+[Jugador X - NegaMax]
+Nodos visitados: 5810422
+Nodos podados: 0
+Profundidad maxima: 4
+Tiempo (ms): 16894.4
+Memoria (bytes): 278900256
+
+[Jugador O - NegaMax]
+Nodos visitados: 5050556
+Nodos podados: 0
+Profundidad maxima: 4
+Tiempo (ms): 14366.7
+Memoria (bytes): 242426688
+
